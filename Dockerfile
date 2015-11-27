@@ -1,8 +1,13 @@
 FROM inclusivedesign/centos:7
 
-ENV NODEJS_VERSION 0.10.33
+RUN mkdir /etc/ansible/playbooks
 
-RUN yum -y install nodejs-${NODEJS_VERSION} npm \
- && yum clean all
+WORKDIR /etc/ansible/playbooks
+
+COPY ansible/* /etc/ansible/playbooks/
+
+RUN ansible-galaxy install -r requirements.yml
+
+RUN ansible-playbook build.yml --tags "install"
 
 CMD ["/bin/bash"]
