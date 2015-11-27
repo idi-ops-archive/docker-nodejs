@@ -4,5 +4,5 @@
   vars_files:
   - build-vars.yml
   roles:
-  - ansible-facts
-  - ansible-nodejs
+  - facts
+  - nodejs
