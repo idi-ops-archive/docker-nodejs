@@ -2,14 +2,12 @@ FROM inclusivedesign/centos:7
 
 RUN mkdir /etc/ansible/playbooks
 
-WORKDIR /opt/ansible/playbooks
+WORKDIR /etc/ansible/playbooks
 
-COPY ansible/requirements.yml requirements.yml
-
-COPY ansible/playbook-docker-build.yml playbook-docker-build.yml
+COPY ansible/* /etc/ansible/playbooks/
 
 RUN ansible-galaxy install -r requirements.yml
 
-RUN ansible-playbook playbook-docker-build.yml --tags "install"
+RUN ansible-playbook build.yml --tags "install"
 
 CMD ["/bin/bash"]
