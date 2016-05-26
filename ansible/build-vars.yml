@@ -2,5 +2,4 @@
 # In the Docker build context, this one is our main interest, for building and
 # tagging different nodejs versions:
 #
-# Node.js version required by application (supported versions: 0.10.36*, 0.10.40, 4.2.0, 4.2.1)
-#nodejs_version: 0.10.36
+nodejs_branch: lts
